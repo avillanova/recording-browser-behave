@@ -7,6 +7,7 @@ pip install git+https://github.com/avillanova/recording-browser-behave.git
 
 Create a object passing the webdriver and start it, example:
 ```
+from video_recorder.record_video import Video
 Video(context.driver).start()
 ```
 
