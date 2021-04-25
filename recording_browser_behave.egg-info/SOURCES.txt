@@ -1,6 +1,0 @@
-README.md
-setup.py
-recording_browser_behave.egg-info/PKG-INFO
-recording_browser_behave.egg-info/SOURCES.txt
-recording_browser_behave.egg-info/dependency_links.txt
-recording_browser_behave.egg-info/top_level.txt
