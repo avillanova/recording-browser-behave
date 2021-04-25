@@ -1,4 +1,10 @@
 ##How to use
+Install the lib via pip
+```
+pip install git+https://github.com/avillanova/recording-browser-behave.git
+```
+
+
 Create a object passing the webdriver and start it, example:
 ```
 Video(context.driver).start()
