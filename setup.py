@@ -5,5 +5,5 @@ setup(
     description='To recording the browser in Thread',
     author='Alex Villanova',
     license='MIT',
-    packages=find_packages(include=['video-recorder'])
+    packages=find_packages(include=['video_recorder'])
 )
