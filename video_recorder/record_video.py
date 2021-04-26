@@ -11,7 +11,7 @@ from PIL import ImageFont
 
 class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
-                 color_hex='#000000', font='resources/Roboto-Black.ttf',
+                 color_hex='#000000', font='Roboto-Black.ttf',
                  alpha=50, show_url=False, show_step=False):
         self.driver = driver
         self.video_name = video_name
