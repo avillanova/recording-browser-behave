@@ -4,4 +4,3 @@
 build.sh
 venv
 .DS
-/recording_browser_behave.egg-info/
