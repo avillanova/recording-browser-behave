@@ -34,15 +34,15 @@ class Video(threading.Thread):
         self.show_step = show_step
         self.alpha = alpha
         self.fps = fps
-        log.info(f'video_name - {{{self.video_name}}} ')
-        log.info(f'four_cc - {{{self.four_cc}}}')
-        log.info(f'font - {{{font}')
-        log.info(f'font_size - {{{font_size}}}')
-        log.info(f'color_hex - {{{self.color_hex}}}')
-        log.info(f'show_url - {{{self.show_url}}}')
-        log.info(f'show_step - {{{self.show_step}}}')
-        log.info(f'alpha - {{{self.alpha}}}')
-        log.info(f'fps - {{{self.fps}}}')
+        log.info(f'video_name - ({self.video_name})')
+        log.info(f'four_cc - ({self.four_cc})')
+        log.info(f'font - {font}')
+        log.info(f'font_size - ({font_size})')
+        log.info(f'color_hex - ({self.color_hex})')
+        log.info(f'show_url - ({self.show_url})')
+        log.info(f'show_step - ({self.show_step})')
+        log.info(f'alpha - ({self.alpha})')
+        log.info(f'fps - {self.fps})')
         super(Video, self).__init__()
 
     def run(self):
@@ -61,43 +61,55 @@ class Video(threading.Thread):
         log.info('Video record is finished')
 
     def _get_matrix(self):
-        byte_stream = self.driver.get_screenshot_as_png()
-        data_array = np.frombuffer(byte_stream, dtype=np.uint8)
-        matrix = cv2.imdecode(data_array, 1)
-        if self.show_url:
-            matrix = self._mark_url(matrix)
-        if self.show_step and hasattr(self.context, 'step'):
-            matrix = self._mark_step(matrix)
-        return matrix
+        try:
+            byte_stream = self.driver.get_screenshot_as_png()
+            data_array = np.frombuffer(byte_stream, dtype=np.uint8)
+            matrix = cv2.imdecode(data_array, 1)
+            if self.show_url:
+                matrix = self._mark_url(matrix)
+            if self.show_step and hasattr(self.context, 'step'):
+                matrix = self._mark_step(matrix)
+            return matrix
+        except Exception as e:
+            log.exception(e)
 
     def _mark_step(self, matrix):
-        text = f'{self.context.step.keyword} {self.context.step.name}'
-        img_pil = Image.fromarray(matrix)
-        draw = ImageDraw.Draw(img_pil)
+        try:
+            text = f'{self.context.step.keyword} {self.context.step.name}'
+            img_pil = Image.fromarray(matrix)
+            draw = ImageDraw.Draw(img_pil)
 
-        margin, offset = 40, 20
-        for line in textwrap.wrap(text):
-            log.info(f'Step Name {{{text}}}')
-            c_text, text_h = self._draw(draw, line)
-            img_pil.paste(c_text, (margin, offset), c_text)
-            offset = offset + text_h + 4
-        return np.array(img_pil)
+            margin, offset = 40, 20
+            for line in textwrap.wrap(text):
+                log.info(f'Step Name ({text})')
+                c_text, text_h = self._draw(draw, line)
+                img_pil.paste(c_text, (margin, offset), c_text)
+                offset = offset + text_h + 4
+            return np.array(img_pil)
+        except Exception as e:
+            log.exception(e)
 
     def _mark_url(self, matrix):
-        text = self.driver.current_url
-        text = textwrap.wrap(text)
-        log.info(f'URL: {{{text[0]}}}')
-        img_pil = Image.fromarray(matrix)
-        draw = ImageDraw.Draw(img_pil)
-        c_text, text_h = self._draw(draw, text[0])
-        margin = 40
-        img_pil.paste(c_text, (margin, self.height - text_h - 10), c_text)
-        return np.array(img_pil)
+        try:
+            text = self.driver.current_url
+            text = textwrap.wrap(text)
+            log.info(f'URL: ({text[0]})')
+            img_pil = Image.fromarray(matrix)
+            draw = ImageDraw.Draw(img_pil)
+            c_text, text_h = self._draw(draw, text[0])
+            margin = 40
+            img_pil.paste(c_text, (margin, self.height - text_h - 10), c_text)
+            return np.array(img_pil)
+        except Exception as e:
+            log.exception(e)
 
     def _draw(self, draw, text):
-        text_w, text_h = draw.textsize(text, self.font)
-        c_text = Image.new('RGB', (text_w + 3, text_h + 3), color=self.color_hex)
-        drawing = ImageDraw.Draw(c_text)
-        drawing.text((1, 0), text, font=self.font, fill=(255, 255, 255, 255))
-        c_text.putalpha(self.alpha)
-        return c_text, text_h
+        try:
+            text_w, text_h = draw.textsize(text, self.font)
+            c_text = Image.new('RGB', (text_w + 3, text_h + 3), color=self.color_hex)
+            drawing = ImageDraw.Draw(c_text)
+            drawing.text((1, 0), text, font=self.font, fill=(255, 255, 255, 255))
+            c_text.putalpha(self.alpha)
+            return c_text, text_h
+        except Exception as e:
+            log.exception(e)
