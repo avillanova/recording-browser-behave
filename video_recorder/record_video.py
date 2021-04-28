@@ -54,8 +54,7 @@ class Video(threading.Thread):
             try:
                 video.write(self._get_matrix())
             except Exception as e:
-                log.exception(e)
-                return False
+                log.exception(f'Finish {e}')
         cv2.destroyAllWindows()
         video.release()
         log.info('Video record is finished')
