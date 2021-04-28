@@ -50,11 +50,13 @@ class Video(threading.Thread):
         log.info(f'height and width ({self.height} {self.width})')
         video = cv2.VideoWriter(
             self.video_name, cv2.VideoWriter_fourcc(*self.four_cc), self.fps, (self.width, self.height))
-        while True:
+        rec = True
+        while rec:
             try:
                 video.write(self._get_matrix())
             except Exception as e:
                 log.exception(f'Finish {e}')
+                rec = False
         cv2.destroyAllWindows()
         video.release()
         log.info('Video record is finished')
