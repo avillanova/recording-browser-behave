@@ -33,7 +33,6 @@ class Video(threading.Thread):
         self.fps = fps
         log.info(f'video_name: {self.video_name}')
         log.info(f'four_cc: {self.four_cc}')
-        log.info(f'height and width: {self.height} {self.width}')
         log.info(f'font: {font}')
         log.info(f'font_size: {font_size}')
         log.info(f'color_hex: {self.color_hex}')
@@ -45,15 +44,18 @@ class Video(threading.Thread):
 
     def run(self):
         self.height, self.width, layers = self._get_matrix().shape
+        log.info(f'height and width: {self.height} {self.width}')
         video = cv2.VideoWriter(
             self.video_name, cv2.VideoWriter_fourcc(*self.four_cc), self.fps, (self.width, self.height))
         while True:
             try:
                 video.write(self._get_matrix())
-            except Exception:
+            except Exception as e:
+                log.exception(e)
                 return False
         cv2.destroyAllWindows()
         video.release()
+        log.info('Video record is finished')
 
     def _get_matrix(self):
         byte_stream = self.driver.get_screenshot_as_png()
@@ -67,6 +69,7 @@ class Video(threading.Thread):
 
     def _mark_step(self, matrix):
         text = f'{self.context.step.keyword} {self.context.step.name}'
+        log.info(f'Step Name: {text}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
 
@@ -80,6 +83,7 @@ class Video(threading.Thread):
     def _mark_url(self, matrix):
         text = self.driver.current_url
         text = textwrap.wrap(text)
+        log.info(f'URL: {text}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
         c_text, text_h = self._draw(draw, text[0])
