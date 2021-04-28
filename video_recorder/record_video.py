@@ -84,7 +84,7 @@ class Video(threading.Thread):
     def _mark_url(self, matrix):
         text = self.driver.current_url
         text = textwrap.wrap(text)
-        log.info(f'URL: {{{text}}}')
+        log.info(f'URL: {{{text[0]}}}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
         c_text, text_h = self._draw(draw, text[0])
