@@ -24,7 +24,7 @@ Create an instance of the video passing the webdriver that you want to record an
 
 Options:
 --------
-You are able to change some configurations:::
+You are able to change some configurations
 
   +===============+===================+======================================================================+
   |  Parameter    | Default value     |                         Description                                  |
@@ -39,7 +39,7 @@ You are able to change some configurations:::
   |show_url       |  False            |    Put the URL in video or not                                       |
   |show_step      |  False            |    Put the Step Name in video or not                                 |
   |font_size      |  32               |    Size of the font text                                             |
-  +===============+==================+=======================================================================+
+  +===============+===================+======================================================================+
 --------------
 
 Examples
