@@ -17,27 +17,27 @@ How to use it:
 --------------
 Create an instance of the video passing the webdriver that you want to record and call start function to run it in a new Thread.
 .. code-block:: python
-    from video_recorder.record_video import Video #import the class
+    from video_recorder.record_video import Video
     Video(context.driver).start()
-
 
 Options:
 --------
 You are able to change some configurations:
-  ===============  ===================  =======================================================================
-     Parameter      Default value                                  Description
-  ---------------  -------------------  -----------------------------------------------------------------------
-  ``video-name``   evidence.mp4         Path and name of your evidence
-  ``four_cc``      mp4v                 Codec to generate the video file
-  ``fps``          3                    Frames per second, you can control the video speed
-  ``context``      None                 Scenario context to get step infos.
-  ``color_hex``    #000000              Highlighted text color
-  ``font``         .Roboto-Black.ttf    Font to write text
-  ``alpha``        50                   Transparency value, if you need bold you can plus this value
-  ``show_url``     False                Put the URL in video or not
-  ``show_step``    False                Put the Step Name in video or not
-  ``font_size``    32                   Size of the font text
-  ===============  ==================  =======================================================================
+
+  +===============+===================+======================================================================+
+  |  Parameter    | Default value     |                                  Description                         |
+  +---------------+-------------------+----------------------------------------------------------------------+
+  |``video-name`` |  evidence.mp4     |    Path and name of your evidence                                    |
+  |``four_cc``    |  mp4v             |    Codec to generate the video file                                  |
+  |``fps``        |  3                |    Frames per second, you can control the video speed                |
+  |``context``    |  None             |    Scenario context to get step infos.                               |
+  |``color_hex``  |  #000000          |    Highlighted text color                                            |
+  |``font``       |  .Roboto-Black.ttf|    Font to write text                                                |
+  |``alpha``      |  50               |    Transparency value, if you need bold you can plus this value      |
+  |``show_url``   |  False            |    Put the URL in video or not                                       |
+  |``show_step``  |  False            |    Put the Step Name in video or not                                 |
+  |``font_size``  |  32               |    Size of the font text                                             |
+  +===============+==================+=======================================================================+
 
 Examples
 --------
