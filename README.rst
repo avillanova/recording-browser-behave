@@ -10,8 +10,9 @@ recording-browser-behave
 How to install
 --------------
 Install the lib via pip:
-.. code-block:: python
+```python
     pip install git+https://github.com/avillanova/recording-browser-behave.git
+```
 --------------
 
 How to use it:
