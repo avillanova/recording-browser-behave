@@ -15,6 +15,7 @@ path = 'Roboto-Black.ttf'
 filepath = pkg_resources.resource_filename(__name__, path)
 log = logging.getLogger('VideoRecorder')
 
+
 class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
                  color_hex='#000000', font=filepath,
@@ -31,20 +32,20 @@ class Video(threading.Thread):
         self.show_step = show_step
         self.alpha = alpha
         self.fps = fps
-        log.info(f'video_name: {self.video_name}')
-        log.info(f'four_cc: {self.four_cc}')
-        log.info(f'font: {font}')
-        log.info(f'font_size: {font_size}')
-        log.info(f'color_hex: {self.color_hex}')
-        log.info(f'show_url: {self.show_url}')
-        log.info(f'show_step: {self.show_step}')
-        log.info(f'alpha: {self.alpha}')
-        log.info(f'fps: {self.fps}')
+        log.info(f'video_name - {{{self.video_name}}} ')
+        log.info(f'four_cc - {{{self.four_cc}}}')
+        log.info(f'font - {{{font}')
+        log.info(f'font_size - {{{font_size}}}')
+        log.info(f'color_hex - {{{self.color_hex}}}')
+        log.info(f'show_url - {{{self.show_url}}}')
+        log.info(f'show_step - {{{self.show_step}}}')
+        log.info(f'alpha - {{{self.alpha}}}')
+        log.info(f'fps - {{{self.fps}}}')
         super(Video, self).__init__()
 
     def run(self):
         self.height, self.width, layers = self._get_matrix().shape
-        log.info(f'height and width: {self.height} {self.width}')
+        log.info(f'height and width ({self.height} {self.width})')
         video = cv2.VideoWriter(
             self.video_name, cv2.VideoWriter_fourcc(*self.four_cc), self.fps, (self.width, self.height))
         while True:
@@ -69,7 +70,7 @@ class Video(threading.Thread):
 
     def _mark_step(self, matrix):
         text = f'{self.context.step.keyword} {self.context.step.name}'
-        log.info(f'Step Name: {text}')
+        log.info(f'Step Name {{{text}}}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
 
@@ -83,7 +84,7 @@ class Video(threading.Thread):
     def _mark_url(self, matrix):
         text = self.driver.current_url
         text = textwrap.wrap(text)
-        log.info(f'URL: {text}')
+        log.info(f'URL: {{{text}}}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
         c_text, text_h = self._draw(draw, text[0])
