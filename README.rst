@@ -7,19 +7,22 @@ recording-browser-behave
 - Examples
 - Important
 
-### How to install
+How to install
+--------------
 Install the lib via pip:
 .. code-block:: python
     pip install git+https://github.com/avillanova/recording-browser-behave.git
 
-### How to use it:
+How to use it:
+--------------
 Create an instance of the video passing the webdriver that you want to record and call start function to run it in a new Thread.
 .. code-block:: python
     from video_recorder.record_video import Video #import the class
     Video(context.driver).start()
 
 
-### Options:
+Options:
+--------
 You are able to change some configurations:
   ===============  ===================  =======================================================================
      Parameter      Default value                                  Description
@@ -36,8 +39,8 @@ You are able to change some configurations:
   ``font_size``    32                   Size of the font text
   ===============  ==================  =======================================================================
 
-
-### Examples
+Examples
+--------
 .. code-block:: python
     def before_scenario(context, scenario):
         chrome_options = Options()
@@ -63,7 +66,8 @@ You are able to change some configurations:
     def before_step(context, step):
         context.step = step
 
-### Important:
+Important:
+----------
 - show_step=True just will work if context is defined in Video(driver, context=context) and context has step attribute, so you need to add it in context using:
 .. code-block:: python
     def before_step(context, step):
@@ -73,5 +77,3 @@ You are able to change some configurations:
         Video(context.driver,
             video_name=f'resources/{scenario.name}/evidence.avi',
             four_cc='XVID')
-
-.. codeauthor::
