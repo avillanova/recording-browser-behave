@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 setup(
     name='recording-browser-behave',
-    version='0.1.2',
+    version='0.1.3',
     description='To recording the browser in Thread',
     author='Alex Villanova',
     author_email='alexsrvillanova@gmail.com',
