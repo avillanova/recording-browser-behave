@@ -1,5 +1,4 @@
 # coding=utf-8
-import os
 import pathlib
 
 import cv2
@@ -14,12 +13,13 @@ import pkg_resources
 path = 'Roboto-Black.ttf'  # always use slash
 filepath = pkg_resources.resource_filename(__name__, path)
 
+
 class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
                  color_hex='#000000', font=filepath,
                  alpha=50, show_url=False, show_step=False, font_size=32):
-        c = str(video_name)
-        os.system(f"sudo mkdir {c}")
+
+        pathlib.Path(f'./{video_name}').mkdir(parents=True, exist_ok=True, mode=755)
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
@@ -35,7 +35,8 @@ class Video(threading.Thread):
 
     def run(self):
         self.height, self.width, layers = self._get_matrix().shape
-        video = cv2.VideoWriter(self.video_name, cv2.VideoWriter_fourcc(*self.four_cc), self.fps, (self.width, self.height))
+        video = cv2.VideoWriter(self.video_name, cv2.VideoWriter_fourcc(*self.four_cc), self.fps,
+                                (self.width, self.height))
         while True:
             try:
                 video.write(self._get_matrix())
