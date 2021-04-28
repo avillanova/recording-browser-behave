@@ -11,7 +11,7 @@ How to install
 --------------
 Install the lib via pip:
 ```python
-    pip install git+https://github.com/avillanova/recording-browser-behave.git
+pip install git+https://github.com/avillanova/recording-browser-behave.git
 ```
 --------------
 
