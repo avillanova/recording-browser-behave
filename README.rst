@@ -26,7 +26,7 @@ Options:
 You are able to change some configurations:
   ===============  ===================  =======================================================================
      Parameter      Default value                                  Description
-  ===============  ===================  =======================================================================
+  ---------------  -------------------  -----------------------------------------------------------------------
   ``video-name``   evidence.mp4         Path and name of your evidence
   ``four_cc``      mp4v                 Codec to generate the video file
   ``fps``          3                    Frames per second, you can control the video speed
