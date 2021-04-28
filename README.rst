@@ -12,6 +12,7 @@ How to install
 Install the lib via pip:
 .. code-block:: python
     pip install git+https://github.com/avillanova/recording-browser-behave.git
+--------------
 
 How to use it:
 --------------
@@ -19,6 +20,7 @@ Create an instance of the video passing the webdriver that you want to record an
 .. code-block:: python
     from video_recorder.record_video import Video
     Video(context.driver).start()
+--------------
 
 Options:
 --------
@@ -38,6 +40,7 @@ You are able to change some configurations.
   |``show_step``  |  False            |    Put the Step Name in video or not                                 |
   |``font_size``  |  32               |    Size of the font text                                             |
   +===============+==================+=======================================================================+
+--------------
 
 Examples
 --------
@@ -65,6 +68,7 @@ Examples
 
     def before_step(context, step):
         context.step = step
+--------------
 
 Important:
 ----------
@@ -77,3 +81,4 @@ Important:
         Video(context.driver,
             video_name=f'resources/{scenario.name}/evidence.avi',
             four_cc='XVID')
+--------------
