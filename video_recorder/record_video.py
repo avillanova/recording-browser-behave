@@ -70,12 +70,12 @@ class Video(threading.Thread):
 
     def _mark_step(self, matrix):
         text = f'{self.context.step.keyword} {self.context.step.name}'
-        log.info(f'Step Name {{{text}}}')
         img_pil = Image.fromarray(matrix)
         draw = ImageDraw.Draw(img_pil)
 
         margin, offset = 40, 20
         for line in textwrap.wrap(text):
+            log.info(f'Step Name {{{text}}}')
             c_text, text_h = self._draw(draw, line)
             img_pil.paste(c_text, (margin, offset), c_text)
             offset = offset + text_h + 4
