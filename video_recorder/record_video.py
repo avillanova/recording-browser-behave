@@ -15,20 +15,18 @@ filepath = pkg_resources.resource_filename(__name__, path)
 class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
                  color_hex='#000000', font=filepath,
-                 alpha=50, show_url=False, show_step=False):
-        print(font)
+                 alpha=50, show_url=False, show_step=False, font_size=32):
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
         self.context = context
         self.height = self.width = 0
-        self.font = ImageFont.truetype(font, 32)
+        self.font = ImageFont.truetype(font, font_size)
         self.color_hex = color_hex
         self.show_url = show_url
         self.show_step = show_step
         self.alpha = alpha
         self.fps = fps
-
         super(Video, self).__init__()
 
     def run(self):
