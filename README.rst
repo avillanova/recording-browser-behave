@@ -1,6 +1,6 @@
-===================
+=========================
 recording-browser-behave
-===================
+=========================
 - How to install
 - How to use it
 - Options
@@ -22,7 +22,7 @@ Create an instance of the video passing the webdriver that you want to record an
 
 Options:
 --------
-You are able to change some configurations:
+You are able to change some configurations.
 
   +===============+===================+======================================================================+
   |  Parameter    | Default value     |                                  Description                         |
