@@ -1,4 +1,5 @@
 # coding=utf-8
+import os
 import pathlib
 
 import cv2
@@ -17,7 +18,8 @@ class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
                  color_hex='#000000', font=filepath,
                  alpha=50, show_url=False, show_step=False, font_size=32):
-        pathlib.Path(video_name).mkdir(parents=True, exist_ok=True)
+        c = str(video_name)
+        os.system(f"sudo mkdir {c}")
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
