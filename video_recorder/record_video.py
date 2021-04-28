@@ -17,7 +17,6 @@ class Video(threading.Thread):
                  color_hex='#000000', font=filepath,
                  alpha=50, show_url=False, show_step=False):
         print(font)
-        print(data)
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
