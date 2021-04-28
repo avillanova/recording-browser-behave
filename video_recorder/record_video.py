@@ -7,12 +7,17 @@ import numpy as np
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import pkgutil
+
+data = pkgutil.get_data(__name__, "Roboto-Black.ttf")
 
 
 class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
-                 color_hex='#000000', font='Roboto-Black.ttf',
+                 color_hex='#000000', font=data,
                  alpha=50, show_url=False, show_step=False):
+        print(font)
+        print(data)
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
