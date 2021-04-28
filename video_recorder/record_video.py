@@ -20,7 +20,9 @@ class Video(threading.Thread):
     def __init__(self, driver, video_name='evidence.mp4', four_cc='mp4v', fps=3, context=None,
                  color_hex='#000000', font=filepath,
                  alpha=50, show_url=False, show_step=False, font_size=32):
-        pathlib.Path(video_name).mkdir(parents=True, exist_ok=True, mode=755)
+        log.info(f'parent - {pathlib.Path(video_name).parent}')
+        log.info(f'name - {pathlib.Path(video_name).name}')
+        pathlib.Path(pathlib.Path(video_name).parent).mkdir(parents=True, exist_ok=True, mode=755)
         self.driver = driver
         self.video_name = video_name
         self.four_cc = four_cc
