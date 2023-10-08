@@ -1,7 +1,7 @@
 
 recording-browser-behave
 ===================
-This library can be used to recorder video from webdriver when you are running an test with behave and without take screenshots.
+This library can be used to recorder video from webdriver when you are running an test with behave without take any screenshot.
 
 
 - How to install
